@@ -1,0 +1,9 @@
+.polygon-card {
+  position: relative;
+  width: 95vw;
+  height: 95vh;
+  border-radius: 15px;
+  overflow: hidden;
+  background-color: aliceblue;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}

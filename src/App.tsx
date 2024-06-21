@@ -1,5 +1,6 @@
 import "./App.css";
 import Card from "./components/Card";
+import PolygonCard from "./components/PolygonCard";
 
 function App() {
   return (
@@ -9,7 +10,7 @@ function App() {
           <p>iii</p>
         </div>
         <div className="center">
-          <p>uuu</p>
+          <PolygonCard />
         </div>
         <div className="right">
           <Card />
