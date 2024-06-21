@@ -1,13 +1,19 @@
 import "./App.css";
-import Header from "./components/Header";
 
 function App() {
   return (
     <>
-      <Header />
-      <h1 className="tkuramot">
-        tkuramotあとは任せた。。。。。。。。。。。。。。
-      </h1>
+      <div className="container">
+        <div className="left">
+          <p>iii</p>
+        </div>
+        <div className="center">
+          <p>uuu</p>
+        </div>
+        <div className="right">
+          <p>aaa</p>
+        </div>
+      </div>
     </>
   );
 }
