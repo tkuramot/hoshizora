@@ -1,4 +1,5 @@
 import "./App.css";
+import Card from "./components/Card";
 
 function App() {
   return (
@@ -11,7 +12,7 @@ function App() {
           <p>uuu</p>
         </div>
         <div className="right">
-          <p>aaa</p>
+          <Card />
         </div>
       </div>
     </>
