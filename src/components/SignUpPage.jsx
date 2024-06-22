@@ -17,7 +17,7 @@ export default function SignUpPage() {
   const handleChangePassword = (e) => {
     setPassword(e.target.value);
   };
-  const handleRegister = (e) => {
+  const handleRegister = () => {
     // TODO check if email and password are valid
     createUserWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {

@@ -1,13 +1,17 @@
 import React, { useState } from "react";
-import { auth } from "@/firebase";
-import { signInWithEmailAndPassword } from "firebase/auth";
 
 import { Box, Container, Grid } from "@mui/material";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@radix-ui/react-label";
+import { useLocation, useNavigate } from "react-router-dom";
+import { useAuth } from "@/hooks/useAuth";
 
 export default function LoginPage() {
+  const navigate = useNavigate();
+  const location = useLocation();
+  const auth = useAuth();
+
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -17,19 +21,13 @@ export default function LoginPage() {
   const handleChangePassword = (e) => {
     setPassword(e.target.value);
   };
-  const handleLogin = (e) => {
+  const handleLogin = () => {
+    const from = location.state?.from || "/";
+
     // TODO check if email and password are valid
-    signInWithEmailAndPassword(auth, email, password)
-      .then((userCredential) => {
-        const user = userCredential.user;
-        console.log(user);
-      })
-      .catch((error) => {
-        // TODO notify user of error
-        const errorCode = error.code;
-        const errorMessage = error.message;
-        console.log(errorCode, errorMessage);
-      });
+    auth.signin(email, password, () => {
+      navigate(from, { replace: true });
+    });
   };
 
   return (
