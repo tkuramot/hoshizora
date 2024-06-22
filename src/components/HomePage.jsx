@@ -1,7 +1,23 @@
+import React from "react";
+import Grid from "@mui/material/Grid";
+import Container from "@mui/material/Container";
+import RangeSlider from "./RangeSlider";
+import Card from "./Card";
+
 export default function HomePage() {
   return (
-    <div>
-      <h1>Home</h1>
-    </div>
+    <Container>
+      <Grid container spacing={12}>
+        <Grid item xs={4}>
+          <RangeSlider />
+        </Grid>
+        <Grid item xs={4}>
+          <Card />
+        </Grid>
+        <Grid item xs={4}>
+          <Card />
+        </Grid>
+      </Grid>
+    </Container>
   );
 }
