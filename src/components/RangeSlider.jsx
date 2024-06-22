@@ -28,10 +28,10 @@ const RangeSlider = () => {
       const newValue = rangeValue < max ? rangeValue + 1 : rangeValue;
       setRangeValue(newValue);
       setCurrentY((rangeHeight * newValue) / max);
-    }, 1000); // 1000ミリ秒 = 1秒
+    }, 1000);
 
     return () => clearInterval(interval);
-  }, [rangeValue]); // rangeValueが変更されたときに実行
+  }, [rangeValue]);
 
   const buildPath = (dy, ty) => {
     return `M 0 ${ty} q 0 ${dy} 320 0 l 0 480 l -320 0 Z`;

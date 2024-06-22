@@ -3,6 +3,7 @@ import Grid from "@mui/material/Grid";
 import Container from "@mui/material/Container";
 import RangeSlider from "./RangeSlider";
 import Card from "./Card";
+import ContentFetcher from "./ContentFetcher";
 
 export default function HomePage() {
   return (
@@ -18,6 +19,7 @@ export default function HomePage() {
           <Card />
         </Grid>
       </Grid>
+      <ContentFetcher />
     </Container>
   );
 }
