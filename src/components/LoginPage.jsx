@@ -6,20 +6,18 @@ import { Link } from "react-router-dom";
 import { getFirebaseErrorMessage } from "@/lib/auth";
 import { useAuth } from "@/hooks/useAuth";
 import { useForm } from "react-hook-form";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 
 export default function LoginPage() {
   const navigate = useNavigate();
-  const location = useLocation();
   const auth = useAuth();
 
   const [authError, setAuthError] = useState("");
   const { register, handleSubmit } = useForm();
 
   const handleSuccess = () => {
-    const from = location.state?.from || "/";
-    navigate(from, { replace: true });
+    navigate("/home", { replace: true });
   };
 
   const handleSubmitEmailAndPasswordLogin = async (data) => {
