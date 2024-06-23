@@ -2,11 +2,12 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 
 const API_URL =
-  "https://aozorahack.org/aozorabunko_text/cards/000081/files/45630_txt_23610/45630_txt_23610.txt";
+  "https://aozorahack.org/aozorabunko_text/cards/000019/files/194_ruby_53253/194_ruby_53253.txt";
 
-const App = () => {
-  const [data, setData] = useState(null);
+// const API_URL =
+//   "https://aozorahack.org/aozorabunko_text/cards/000081/files/45630_txt_23610/45630_txt_23610.txt";
 
+const ContentFetcher = ({ setData }) => {
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -25,10 +26,6 @@ const App = () => {
 
     fetchData();
   }, []);
-
-  console.log(data);
-
-  return <div>{data ? <pre>{data}</pre> : <p>Loading...</p>}</div>;
 };
 
-export default App;
+export default ContentFetcher;

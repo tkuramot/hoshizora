@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { useAuth } from "@/hooks/useAuth";
 
-const HomePage = () => {
+const IndexPage = () => {
   const buttonStyle = {
     position: "absolute",
     top: "3%",
@@ -52,38 +52,27 @@ const HomePage = () => {
     backgroundStyle: "rgba(64, 0, 0, 0.1)",
   };
 
-  // const na = {
-  //   position: "absolute",
-  //   top: 0,
-  //   width: "100%",
-  //   height: "100%",
-  //   backgroundColor: "rgba(64, 0, 0, 0.1)",
-  //   zIndex: 2,
-  // };
-
   const auth = useAuth();
 
   return (
     <div style={backgroundStyle}>
-      {auth.user
-        ? (
-          <Link
-            style={buttonStyle}
-            className="text-indigo-600 underline hover:text-blue-700"
-            to="/logout"
-          >
-            ログアウト
-          </Link>
-        )
-        : (
-          <Link
-            style={buttonStyle}
-            className="text-indigo-600 underline hover:text-blue-700"
-            to="/login"
-          >
-            ログイン
-          </Link>
-        )}
+      {auth.user ? (
+        <Link
+          style={buttonStyle}
+          className="text-indigo-600 underline hover:text-blue-700"
+          to="/logout"
+        >
+          ログアウト
+        </Link>
+      ) : (
+        <Link
+          style={buttonStyle}
+          className="text-indigo-600 underline hover:text-blue-700"
+          to="/login"
+        >
+          ログイン
+        </Link>
+      )}
       <div style={backgroundImageStyle}></div>
       <div style={overlayStyle}></div>
       <div style={contentStyle}>こ は る さ ん の 本 棚</div>
@@ -91,4 +80,4 @@ const HomePage = () => {
   );
 };
 
-export default HomePage;
+export default IndexPage;
