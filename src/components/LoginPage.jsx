@@ -2,6 +2,7 @@ import GoogleLogo from "@/assets/google-icon.svg";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { Link } from "react-router-dom";
 import { getFirebaseErrorMessage } from "@/lib/auth";
 import { useAuth } from "@/hooks/useAuth";
 import { useForm } from "react-hook-form";
@@ -87,7 +88,7 @@ export default function LoginPage() {
           <div className="mt-5">
             <Button
               onClick={handleGoogleLogin}
-              className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500"
+              className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white focus:outline-none focus:ring-2 focus:ring-offset-2"
             >
               <span className="flex items-center">
                 Googleではじめる
@@ -98,6 +99,9 @@ export default function LoginPage() {
                 />
               </span>
             </Button>
+          </div>
+          <div className="mt-5 flex justify-center text-xs hover:underline">
+            <Link to="/signup">はじめての方はこちら</Link>
           </div>
         </form>
       </div>

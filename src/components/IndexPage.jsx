@@ -1,6 +1,15 @@
 import React from "react";
+import { Link } from "react-router-dom";
+import { useAuth } from "@/hooks/useAuth";
 
 const HomePage = () => {
+  const buttonStyle = {
+    position: "absolute",
+    top: "3%",
+    left: "93%",
+    zIndex: 3,
+  };
+
   const backgroundStyle = {
     position: "relative",
     width: "100vw",
@@ -52,8 +61,29 @@ const HomePage = () => {
   //   zIndex: 2,
   // };
 
+  const auth = useAuth();
+
   return (
     <div style={backgroundStyle}>
+      {auth.user
+        ? (
+          <Link
+            style={buttonStyle}
+            className="text-indigo-600 underline hover:text-blue-700"
+            to="/logout"
+          >
+            ログアウト
+          </Link>
+        )
+        : (
+          <Link
+            style={buttonStyle}
+            className="text-indigo-600 underline hover:text-blue-700"
+            to="/login"
+          >
+            ログイン
+          </Link>
+        )}
       <div style={backgroundImageStyle}></div>
       <div style={overlayStyle}></div>
       <div style={contentStyle}>こ は る さ ん の 本 棚</div>
