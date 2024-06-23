@@ -39,7 +39,7 @@ export default function LoginPage() {
 
   useEffect(() => {
     if (auth.user) {
-      navigate("/", { replace: true });
+      navigate("/home", { replace: true });
     }
   }, [auth.user, navigate]);
 
