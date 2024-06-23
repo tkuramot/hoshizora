@@ -1,5 +1,6 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import ContentFetcher from "./ContentFetcher";
+import "./HomePage.css";
 
 export default function HomePage() {
   const [data, setData] = useState(null);
@@ -17,11 +18,11 @@ export default function HomePage() {
 
   const formatText = (text) => {
     const cleanedText = removePattern(removePattern1(text));
-    const regex = /.{1,30}/g; // 30文字ごとに改行するための正規表現
+    const regex = /.{1,30}/g;
     const formattedText = cleanedText.match(regex)?.join("\n") || "";
     const lines = formattedText.split("\n");
-    const start = currentPage * 10;
-    const end = start + 10;
+    const start = currentPage * 15;
+    const end = start + 15;
     return lines.slice(start, end).join("\n");
   };
 
@@ -33,32 +34,38 @@ export default function HomePage() {
     setCurrentPage((prevPage) => Math.max(prevPage - 1, 0));
   };
 
-  console.log(data);
-
-  if (data) console.log(formatText(data));
+  // デバッグ用
+  useEffect(() => {
+    console.log("data:", data);
+    if (data) console.log("formattedText:", formatText(data));
+  }, [data, currentPage]);
 
   return (
-    <div className="background">
+    <>
+      <div className="background"></div>
       <div className="background-image"></div>
       <div className="overlay"></div>
 
       <ContentFetcher setData={setData} />
+      <div className="content-container">
+        <button className="next-button" onClick={handleNext}>
+          つぎへ
+        </button>
 
-      {data && (
-        <>
+        {data && (
           <div className="content">
-            <button onClick={handlePrev} disabled={currentPage === 0}>
-              Prev
-            </button>
             <pre>{formatText(data)}</pre>
-            <div>
-              <div>
-                <button onClick={handleNext}>Next</button>
-              </div>
-            </div>
           </div>
-        </>
-      )}
-    </div>
+        )}
+
+        <button
+          className="prev-button"
+          onClick={handlePrev}
+          disabled={currentPage === 0}
+        >
+          もどる
+        </button>
+      </div>
+    </>
   );
 }
