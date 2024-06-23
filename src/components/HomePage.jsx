@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 import ContentFetcher from "./ContentFetcher";
 import "./HomePage.css";
 
@@ -42,29 +42,28 @@ export default function HomePage() {
 
   return (
     <>
-      <div className="background"></div>
-      <div className="background-image"></div>
-      <div className="overlay"></div>
+      <div className="background">
+        <div className="overlay"></div>
+        <ContentFetcher setData={setData} />
+        <div className="content-container">
+          <button className="next-button" onClick={handleNext}>
+            つぎへ
+          </button>
 
-      <ContentFetcher setData={setData} />
-      <div className="content-container">
-        <button className="next-button" onClick={handleNext}>
-          つぎへ
-        </button>
+          {data && (
+            <div className="content">
+              <pre>{formatText(data)}</pre>
+            </div>
+          )}
 
-        {data && (
-          <div className="content">
-            <pre>{formatText(data)}</pre>
-          </div>
-        )}
-
-        <button
-          className="prev-button"
-          onClick={handlePrev}
-          disabled={currentPage === 0}
-        >
-          もどる
-        </button>
+          <button
+            className="prev-button"
+            onClick={handlePrev}
+            disabled={currentPage === 0}
+          >
+            もどる
+          </button>
+        </div>
       </div>
     </>
   );
