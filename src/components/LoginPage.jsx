@@ -6,7 +6,7 @@ import { getFirebaseErrorMessage } from "@/lib/auth";
 import { useAuth } from "@/hooks/useAuth";
 import { useForm } from "react-hook-form";
 import { useLocation, useNavigate } from "react-router-dom";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export default function LoginPage() {
   const navigate = useNavigate();
@@ -36,6 +36,12 @@ export default function LoginPage() {
   const handleGoogleLogin = async () => {
     await auth.loginWithGoogle(handleSuccess);
   };
+
+  useEffect(() => {
+    if (auth.user) {
+      navigate("/", { replace: true });
+    }
+  }, [auth.user, navigate]);
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-white py-12 px-4 sm:px-6 lg:px-8">
