@@ -1,5 +1,6 @@
 import { useFavoriteBook } from "@/hooks/useFavoriteBook";
 import "./FavoriteBookPage.css";
+import { Card } from "@/components/ui/card"
 
 export default function HomePage() {
   const { favoriteBooks } = useFavoriteBook();
@@ -8,11 +9,12 @@ export default function HomePage() {
     <>
       <div className="background">
         <div className="overlay"></div>
-        <div className="content-container content">
+        <div className="content-container">
+          <div>{favoriteBooks.length} 件のお気に入り</div>
           {favoriteBooks.map((favoriteBook) => (
-            <div key={favoriteBook.id}>
+            <Card key={favoriteBook.id}>
               <pre>{favoriteBook.text}</pre>
-            </div>
+            </Card>
           ))}
         </div>
       </div>
