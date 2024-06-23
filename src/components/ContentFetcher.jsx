@@ -1,13 +1,14 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-
-const API_URL =
-  "https://aozorahack.org/aozorabunko_text/cards/000019/files/194_ruby_53253/194_ruby_53253.txt";
-
-// const API_URL =
-//   "https://aozorahack.org/aozorabunko_text/cards/000081/files/45630_txt_23610/45630_txt_23610.txt";
+import bookData from "../assets/book.json";
 
 const ContentFetcher = ({ setData }) => {
+  const getRandomNumber = () => {
+    return Math.floor(Math.random() * 61);
+  };
+
+  const API_URL = bookData[getRandomNumber()];
+
   useEffect(() => {
     const fetchData = async () => {
       try {
